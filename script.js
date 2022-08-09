@@ -1,4 +1,3 @@
-
 function getComputerChoice() {
     let i = Math.floor(Math.random()*3);
     let choice = 'hello'
@@ -58,7 +57,7 @@ game = () => {
     let player_score = 0;
     let computer_score = 0;
 
-    for (let i = 0; i < 5; i++){
+    //for (let i = 0; i < 5; i++){
         result = playerSelection(prompt(), getComputerChoice());
         if (result == 0){
             computer_score += 1;
@@ -76,7 +75,7 @@ game = () => {
         else{
             return 'no valid input has been given'
         }
-    }
+    //}
 
     if (player_score > computer_score){
         return 'You win with '+ player_score + ' VS ' + computer_score + '!' 
@@ -88,5 +87,9 @@ game = () => {
         return 'It s a DRAW!'
     }
 }
+
+
+const btns = document.querySelectorAll('.btn');
+btns.forEach(btn => btn.addEventListener('click', game)) //Allows button clicks to play the game
 
 
