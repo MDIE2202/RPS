@@ -53,12 +53,43 @@ playerSelection = (player, computer) => {
     return outcome;
 }
 
-game = () => {
-    let player_score = 0;
-    let computer_score = 0;
+end = (computer_score, player_score) => {
 
-    //for (let i = 0; i < 5; i++){
-        result = playerSelection(prompt(), getComputerChoice());
+    if (computer_score >= 5 || player_score >=5){
+        const holder = document.querySelector('.holder');
+        const content = document.createElement('p');
+    
+        if (player_score > computer_score){
+            content.classList.add('content');
+            let text = 'You win with '+ player_score + ' VS ' + computer_score + '!' 
+            content.textContent = text;
+        }
+        else if (player_score < computer_score){
+            content.classList.add('content');
+            let text = 'You lose with '+ player_score + ' VS ' + computer_score + '!'
+            content.textContent = text
+        }
+        else{
+            content.classList.add('content');
+            let text = 'Its a DRAW'
+            content.textContent = text
+        }
+        
+        holder.appendChild(content);
+
+        const btnholder = document.querySelector('.btnholder');
+        const content2 = document.createElement('button');
+        content2.textContent = 'Replay';
+
+        btnholder.appendChild(content2)
+
+    }
+    
+    }
+    
+
+game = (player) => {
+        result = playerSelection(player, getComputerChoice());
         if (result == 0){
             computer_score += 1;
             console.log('computer wins')
@@ -75,21 +106,30 @@ game = () => {
         else{
             return 'no valid input has been given'
         }
-    //}
+        
+        end(computer_score, player_score)
+    }
 
-    if (player_score > computer_score){
-        return 'You win with '+ player_score + ' VS ' + computer_score + '!' 
-    }
-    else if (player_score < computer_score){
-        return 'You lose with '+ player_score + ' VS ' + computer_score + '!' 
-    }
-    else{
-        return 'It s a DRAW!'
-    }
-}
+let computer_score = 0;
+let player_score = 0;
 
 
-const btns = document.querySelectorAll('.btn');
-btns.forEach(btn => btn.addEventListener('click', game)) //Allows button clicks to play the game
+const btn = document.querySelector('.rock');
+const btncontent = document.createElement('button');
+btncontent.textContent = 'Rock';
+btn.appendChild(btncontent)
+btn.addEventListener('click', function(){game('rock')})
+
+const btn1 = document.querySelector('.paper');
+btncontent1 = document.createElement('button');
+btncontent1.textContent = 'Paper';
+btn1.appendChild(btncontent1)
+btn1.addEventListener('click', function(){game('paper')})
+
+const btn2 = document.querySelector('.scissors');
+btncontent2 = document.createElement('button');
+btncontent2.textContent = 'Scissors';
+btn2.appendChild(btncontent2)
+btn2.addEventListener('click', function(){game('scissors')})
 
 
