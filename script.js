@@ -54,7 +54,6 @@ playerSelection = (player, computer) => {
 }
 
 end = (computer_score, player_score) => {
-
     if (computer_score >= 5 || player_score >=5){
         const holder = document.querySelector('.holder');
         const content = document.createElement('p');
@@ -83,6 +82,11 @@ end = (computer_score, player_score) => {
 
         btnholder.appendChild(content2)
 
+        btn.style.display = 'none';
+        btn1.style.display = 'none';
+        btn2.style.display = 'none';
+
+
     }
     
     }
@@ -110,26 +114,30 @@ game = (player) => {
         end(computer_score, player_score)
     }
 
+
 let computer_score = 0;
 let player_score = 0;
 
+        const btn = document.querySelector('.rock');
+        const btncontent = document.createElement('button');
+        btncontent.textContent = 'Rock';
+        btn.appendChild(btncontent)
+        btn.addEventListener('click', function(){game('rock')})
 
-const btn = document.querySelector('.rock');
-const btncontent = document.createElement('button');
-btncontent.textContent = 'Rock';
-btn.appendChild(btncontent)
-btn.addEventListener('click', function(){game('rock')})
+        const btn1 = document.querySelector('.paper');
+        btncontent1 = document.createElement('button');
+        btncontent1.textContent = 'Paper';
+        btn1.appendChild(btncontent1)
+        btn1.addEventListener('click', function(){game('paper')})
 
-const btn1 = document.querySelector('.paper');
-btncontent1 = document.createElement('button');
-btncontent1.textContent = 'Paper';
-btn1.appendChild(btncontent1)
-btn1.addEventListener('click', function(){game('paper')})
+        const btn2 = document.querySelector('.scissors');
+        btncontent2 = document.createElement('button');
+        btncontent2.textContent = 'Scissors';
+        btn2.appendChild(btncontent2)
+        btn2.addEventListener('click', function(){game('scissors')})
 
-const btn2 = document.querySelector('.scissors');
-btncontent2 = document.createElement('button');
-btncontent2.textContent = 'Scissors';
-btn2.appendChild(btncontent2)
-btn2.addEventListener('click', function(){game('scissors')})
+    
+
+
 
 
