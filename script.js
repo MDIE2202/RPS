@@ -81,14 +81,11 @@ game = (player) => {
         result = playerSelection(player, computer_choice);
         if (result == 0){
             computer_score += 1;
-            console.log('computer wins')
         }
         else if (result == 1){
             player_score += 1;
-            console.log('you win')
         }
         else if (result == 2){
-            console.log('DRAW')
         }
         else{
             return 'no valid input has been given'
