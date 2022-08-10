@@ -57,10 +57,10 @@ playerSelection = (player, computer) => {
 end = (computer_score, player_score) => {
     if (computer_score >= 5 || player_score >=5){
 
-        btn.classList.add('hide')
-        btn1.classList.add('hide')
-        btn2.classList.add('hide')
-        rp.classList.remove('hide')
+        btn.setAttribute('id','hide');
+        btn1.setAttribute('id','hide');
+        btn2.setAttribute('id','hide');
+        rp.removeAttribute('id');
     }
     
     }
@@ -107,11 +107,11 @@ reset = () => {
     console.log('test')
     computer_score = 0
     player_score = 0
-    btn.classList.remove('hide');
-    btn1.classList.remove('hide');
-    btn2.classList.remove('hide');
+    btn.removeAttribute('id');;
+    btn1.removeAttribute('id');
+    btn2.removeAttribute('id');
     document.querySelector('.holder').innerHTML = ''
-    rp.classList.add('hide');
+    rp.setAttribute('id','hide');
 }
     
 
@@ -120,19 +120,25 @@ let player_score = 0;
 
         const btn = document.querySelector('.rock');
         const btncontent = document.createElement('button');
+        btncontent.classList.add('rock_layout')
         btncontent.textContent = 'Rock';
+        btncontent.innerHTML = '<img src = ./images/Rock.png style = max-width:100%>'
         btn.appendChild(btncontent)
         btn.addEventListener('click', function(){game('rock')})
 
         const btn1 = document.querySelector('.paper');
         btncontent1 = document.createElement('button');
+        btncontent1.classList.add('paper_layout')
         btncontent1.textContent = 'Paper';
+        btncontent1.innerHTML = '<img src = ./images/Paper.png style = max-width:100%>'
         btn1.appendChild(btncontent1)
         btn1.addEventListener('click', function(){game('paper')})
 
         const btn2 = document.querySelector('.scissors');
         btncontent2 = document.createElement('button');
+        btncontent2.classList.add('scissors_layout')
         btncontent2.textContent = 'Scissors';
+        btncontent2.innerHTML = '<img src = ./images/scissors.png style = "max-width:100%">'
         btn2.appendChild(btncontent2)
         btn2.addEventListener('click', function(){game('scissors')})
 
@@ -151,7 +157,7 @@ let player_score = 0;
         holder.appendChild(content);
 
         const rp = document.querySelector('.replaybutton');
-        rp.classList.add('.hide')
+        rp.setAttribute('id','hide')
         rp.addEventListener('click', reset);
 
 
