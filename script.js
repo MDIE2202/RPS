@@ -1,3 +1,4 @@
+
 function getComputerChoice() {
     let i = Math.floor(Math.random()*3);
     let choice = 'hello'
@@ -55,45 +56,19 @@ playerSelection = (player, computer) => {
 
 end = (computer_score, player_score) => {
     if (computer_score >= 5 || player_score >=5){
-        const holder = document.querySelector('.holder');
-        const content = document.createElement('p');
-    
-        if (player_score > computer_score){
-            content.classList.add('content');
-            let text = 'You win with '+ player_score + ' VS ' + computer_score + '!' 
-            content.textContent = text;
-        }
-        else if (player_score < computer_score){
-            content.classList.add('content');
-            let text = 'You lose with '+ player_score + ' VS ' + computer_score + '!'
-            content.textContent = text
-        }
-        else{
-            content.classList.add('content');
-            let text = 'Its a DRAW'
-            content.textContent = text
-        }
-        
-        holder.appendChild(content);
 
-        const btnholder = document.querySelector('.btnholder');
-        const content2 = document.createElement('button');
-        content2.textContent = 'Replay';
-
-        btnholder.appendChild(content2)
-
-        btn.style.display = 'none';
-        btn1.style.display = 'none';
-        btn2.style.display = 'none';
-
-
+        btn.classList.add('hide')
+        btn1.classList.add('hide')
+        btn2.classList.add('hide')
+        rp.classList.remove('hide')
     }
     
     }
     
 
 game = (player) => {
-        result = playerSelection(player, getComputerChoice());
+        let computer_choice = getComputerChoice();
+        result = playerSelection(player, computer_choice);
         if (result == 0){
             computer_score += 1;
             console.log('computer wins')
@@ -103,17 +78,42 @@ game = (player) => {
             console.log('you win')
         }
         else if (result == 2){
-            player_score += 1;
-            computer_score += 1;
             console.log('DRAW')
         }
         else{
             return 'no valid input has been given'
         }
         
+        document.querySelector('.holder').innerHTML = ''
+        
+        const holder = document.querySelector('.holder');
+        const content = document.createElement('p');
+        const content_choice = document.createElement('p')
+
+        content_choice.classList.add('content_choice');
+        content_choice.textContent = 'You chose:' + player + 'VS computer chose:' + computer_choice;
+        holder.appendChild(content_choice)
+
+        content.classList.add('content');
+        let text = 'Player Score = '+ player_score + ' Computer Score ' + computer_score + '!' 
+        content.textContent = text;
+
+        
+        holder.appendChild(content);
         end(computer_score, player_score)
     }
 
+reset = () => {
+    console.log('test')
+    computer_score = 0
+    player_score = 0
+    btn.classList.remove('hide');
+    btn1.classList.remove('hide');
+    btn2.classList.remove('hide');
+    document.querySelector('.holder').innerHTML = ''
+    rp.classList.add('hide');
+}
+    
 
 let computer_score = 0;
 let player_score = 0;
@@ -136,7 +136,23 @@ let player_score = 0;
         btn2.appendChild(btncontent2)
         btn2.addEventListener('click', function(){game('scissors')})
 
-    
+        const btnholder = document.querySelector('.btnholder');
+        const content2 = document.createElement('button');
+        content2.classList.add('replaybutton');
+        content2.classList.add('hide');
+        content2.textContent = 'Replay';  
+        btnholder.appendChild(content2);
+
+        const holder = document.querySelector('.holder');
+        const content = document.createElement('p');
+        content.classList.add('content');
+        let text = 'Player Score = '+ player_score + ' Computer Score ' + computer_score + '!' 
+        content.textContent = text;
+        holder.appendChild(content);
+
+        const rp = document.querySelector('.replaybutton');
+        rp.classList.add('.hide')
+        rp.addEventListener('click', reset);
 
 
 
