@@ -61,6 +61,17 @@ end = (computer_score, player_score) => {
         btn1.setAttribute('id','hide');
         btn2.setAttribute('id','hide');
         rp.removeAttribute('id');
+
+        const final = document.querySelector('.final_message');
+        const final_message = document.createElement('p');
+        if(player_score == 5){
+            final_message.textContent = 'You WIN!'
+        }else{
+            final_message.textContent = 'You LOSE!'
+        }
+        final.appendChild(final_message)
+        
+
     }
     
     }
@@ -84,34 +95,31 @@ game = (player) => {
             return 'no valid input has been given'
         }
         
-        document.querySelector('.holder').innerHTML = ''
-        
-        const holder = document.querySelector('.holder');
-        const content = document.createElement('p');
+        document.querySelector('.holder_player').innerHTML = ''
+        document.querySelector('.holder_computer').innerHTML = ''
+
+        const holder_player = document.querySelector('.holder_player');
         const content_choice = document.createElement('p')
+        content_choice.textContent = player_score;
+        holder_player.appendChild(content_choice)
 
-        content_choice.classList.add('content_choice');
-        content_choice.textContent = 'You chose:' + player + 'VS computer chose:' + computer_choice;
-        holder.appendChild(content_choice)
+        const holder_computer = document.querySelector('.holder_computer');
+        const content_computer = document.createElement('p')
+        content_computer.textContent = computer_score;
+        holder_computer.appendChild(content_computer);
 
-        content.classList.add('content');
-        let text = 'Player Score = '+ player_score + ' Computer Score ' + computer_score + '!' 
-        content.textContent = text;
-
-        
-        holder.appendChild(content);
         end(computer_score, player_score)
     }
 
 reset = () => {
-    console.log('test')
     computer_score = 0
     player_score = 0
     btn.removeAttribute('id');;
     btn1.removeAttribute('id');
     btn2.removeAttribute('id');
-    document.querySelector('.holder').innerHTML = ''
     rp.setAttribute('id','hide');
+    document.querySelector('.final_message').innerHTML = ''
+
 }
     
 
@@ -148,13 +156,6 @@ let player_score = 0;
         content2.classList.add('hide');
         content2.textContent = 'Replay';  
         btnholder.appendChild(content2);
-
-        const holder = document.querySelector('.holder');
-        const content = document.createElement('p');
-        content.classList.add('content');
-        let text = 'Player Score = '+ player_score + ' Computer Score ' + computer_score + '!' 
-        content.textContent = text;
-        holder.appendChild(content);
 
         const rp = document.querySelector('.replaybutton');
         rp.setAttribute('id','hide')

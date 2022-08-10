@@ -1,3 +1,32 @@
+h1{
+    font-size: 60px; 
+    color: darkblue; 
+}
+
+h2{
+    font-size: 30px;
+    color: black;
+}
+
+p{
+    font-size: 100px;
+    position: absolute;
+    top:auto;
+}
+
+.holder_score{
+    display:flex; 
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header_text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 .main{
     height: 100%;
@@ -5,8 +34,7 @@
     flex-direction: column;
 }
 .header{
-    background-color: gray;
-    flex: 1
+    flex: 1;
 
 }
 
@@ -15,17 +43,20 @@
     flex-direction: row;
     justify-items: center;
     align-items: center;
-    flex: 2
+    flex: 1;
 }
 
 .lower_buttons{
-    flex: 1
+    flex: 1;
 
 }
 
 .footer{
-    flex: 1
-
+    flex: 1;
+    background-color: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -59,21 +90,21 @@ body, html{
 }
 
 .rock_layout{
-    width: 70%;
+    width: 50%;
     background-color: white;
     border: none;
     border-radius: 10px;
 }
 
 .paper_layout{
-    width: 70%;
+    width: 50%;
     background-color: white;
     border: none;
     border-radius: 10px;
 }
 
 .scissors_layout{
-    width: 70%;
+    width: 50%;
     background-color: white;
     border: none;
     border-radius: 10px;
@@ -88,4 +119,23 @@ body, html{
 }
 .scissors_layout:hover{
     background-color: lightcoral;
+}
+
+.box{
+    width: 80%;
+    height: 80%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+
+.final_message{
+    height:100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
