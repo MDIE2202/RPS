@@ -75,7 +75,6 @@ end = (computer_score, player_score) => {
     }
     
     }
-    
 
 game = (player) => {
         let computer_choice = getComputerChoice();
@@ -98,10 +97,16 @@ game = (player) => {
         document.querySelector('.holder_player').innerHTML = ''
         document.querySelector('.holder_computer').innerHTML = ''
 
+        const pick = document.querySelector('.pick1');
+        pick.innerHTML = '<img src = ./images/'+ player + '.png style = max-width:100%>'
+
         const holder_player = document.querySelector('.holder_player');
         const content_choice = document.createElement('p')
         content_choice.textContent = player_score;
         holder_player.appendChild(content_choice)
+
+        const pick2 = document.querySelector('.pick2');
+        pick2.innerHTML = '<img src = ./images/'+ computer_choice + '.png style = max-width:100%>'
 
         const holder_computer = document.querySelector('.holder_computer');
         const content_computer = document.createElement('p')
@@ -119,6 +124,13 @@ reset = () => {
     btn2.removeAttribute('id');
     rp.setAttribute('id','hide');
     document.querySelector('.final_message').innerHTML = ''
+    document.querySelector('.holder_player').innerHTML = ''
+    document.querySelector('.holder_computer').innerHTML = ''
+    const pick = document.querySelector('.pick1');
+    pick.innerHTML = ''
+    const pick2 = document.querySelector('.pick2');
+    pick2.innerHTML = ''
+
 
 }
     
@@ -130,7 +142,7 @@ let player_score = 0;
         const btncontent = document.createElement('button');
         btncontent.classList.add('rock_layout')
         btncontent.textContent = 'Rock';
-        btncontent.innerHTML = '<img src = ./images/Rock.png style = max-width:100%>'
+        btncontent.innerHTML = '<img src = ./images/rock.png style = max-width:100%>'
         btn.appendChild(btncontent)
         btn.addEventListener('click', function(){game('rock')})
 
@@ -138,7 +150,7 @@ let player_score = 0;
         btncontent1 = document.createElement('button');
         btncontent1.classList.add('paper_layout')
         btncontent1.textContent = 'Paper';
-        btncontent1.innerHTML = '<img src = ./images/Paper.png style = max-width:100%>'
+        btncontent1.innerHTML = '<img src = ./images/paper.png style = max-width:100%>'
         btn1.appendChild(btncontent1)
         btn1.addEventListener('click', function(){game('paper')})
 
